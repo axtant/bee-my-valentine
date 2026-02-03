@@ -1,0 +1,146 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+.ai-btn {
+  background: rgba(255,255,255,0.7);
+  font-size: 13px;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* =========================
+   QUIZ PLAYER FIX
+========================= */
+
+.quiz-wrapper {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.quiz-card {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 22px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+  text-align: center;
+}
+
+/* Score */
+
+.quiz-score {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #ff0055;
+}
+
+/* Question */
+
+.quiz-question {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 14px 0;
+  color: #333;
+}
+
+/* Image */
+
+.quiz-image {
+  width: 100%;
+  border-radius: 16px;
+  margin: 12px 0;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+/* Buttons */
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.quiz-btn {
+  background: white;
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.quiz-btn:hover {
+  background: #ff4d88;
+  color: white;
+  transform: scale(1.02);
+}
+
+/* Feedback */
+
+.quiz-feedback {
+  font-size: 1.2rem;
+  margin-top: 16px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .quiz-card {
+    padding: 18px;
+  }
+
+  .quiz-question {
+    font-size: 1.1rem;
+  }
+
+  .quiz-btn {
+    padding: 12px;
+  }
+}
