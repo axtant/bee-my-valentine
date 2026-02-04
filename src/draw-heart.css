@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
+.draw-box-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    font-family: 'Amatic SC', 'Fredoka', cursive;
+}
+
+.drawBox {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.drawBox .mainHeart {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawBox .mainHeart svg {
+    width: 250px;
+    /* Use fixed width for more control */
+    height: auto;
+}
+
+.drawBox .mainHeart svg .drawHeart {
+    fill: none;
+    stroke: #d63b3b;
+    stroke-linejoin: bevel;
+    stroke-width: 3px;
+    stroke-dasharray: 1867.0498046875;
+    stroke-dashoffset: 1867.0498046875;
+    animation: draw 3s linear 0.5s forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.drawBox .greeting {
+    font-family: 'Amatic SC', 'Fredoka', cursive;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #d63b3b;
+    letter-spacing: 2px;
+    width: 100%;
+    z-index: 10;
+}
+
+.drawBox .greeting .s {
+    display: inline-block;
+    padding: 0 1px;
+    opacity: 0;
+    /* GSAP will animate this */
+}
+
+.drawBox .greeting .s.space {
+    width: 15px;
+}

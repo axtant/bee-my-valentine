@@ -1,0 +1,125 @@
+.floating-hearts-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    /* Allow clicks to pass through */
+    z-index: 0;
+}
+
+.heart-anim {
+    position: absolute;
+    /* Use a default top that starts below screen */
+    top: 110%;
+}
+
+.heart-anim:before,
+.heart-anim:after {
+    position: absolute;
+    content: "";
+    left: 18px;
+    top: 0;
+    width: 18px;
+    height: 30px;
+    background: #CC2022;
+    border-radius: 30px 30px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-anim:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.altheart {
+    background: url(http://static.indigoimages.ca/2016/shop/113439_img25_twotoneheart.png) no-repeat center;
+    width: 24px;
+    height: 21px;
+    position: absolute;
+    display: block;
+    background-size: contain;
+}
+
+/* Animations from user request */
+.x1 {
+    left: 5%;
+    transform: scale(0.9);
+    opacity: 0.6;
+    animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+
+.x2 {
+    left: 25%;
+    transform: scale(0.6);
+    opacity: 0.9;
+    animation: moveclouds 25s linear infinite, sideWays 5s ease-in-out infinite alternate;
+}
+
+.x3 {
+    left: 55%;
+    transform: scale(0.8);
+    opacity: 0.8;
+    animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+}
+
+.x4 {
+    left: 72%;
+    transform: scale(0.75);
+    opacity: 0.9;
+    animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
+}
+
+.x5 {
+    left: 88%;
+    transform: scale(0.8);
+    opacity: 0.3;
+    animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+
+.x6 {
+    left: 33%;
+    opacity: 1;
+    animation: moveclouds 10s linear infinite, swayWays 9s ease-in-out infinite alternate;
+}
+
+@keyframes moveclouds {
+    0% {
+        top: 110%;
+    }
+
+    100% {
+        top: -10%;
+    }
+}
+
+@keyframes sideWays {
+    0% {
+        margin-left: 0px;
+    }
+
+    100% {
+        margin-left: 50px;
+    }
+}
+
+@keyframes swayWays {
+    0% {
+        transform: rotate(12deg);
+        margin-left: -0.3%;
+    }
+
+    33% {
+        transform: rotate(-2deg);
+        margin-left: 0.7%;
+    }
+
+    100% {
+        transform: rotate(0deg);
+        margin-left: -12%;
+    }
+}
