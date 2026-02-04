@@ -20,4 +20,5 @@ $ npm install
 ### 🎁 Made With Love
 
 This project was created as a fun Valentine surprise 
-because sometimes a website says more than just words 💕
+because sometimes a website says more than just words 💕<br>
+big thanks to my brothers and AI :)
