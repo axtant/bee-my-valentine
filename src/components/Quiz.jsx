@@ -19,10 +19,8 @@ const angy = [
 export default function Quiz() {
 
   const [params] = useSearchParams();
-
-  const skip = params.get("skip");
-
   const payload = JSON.parse(params.get("q") || "{}");
+  const skip = payload.skip;
 
   const questions = payload.questions || [];
   const finalMessage = payload.finalMessage || "You made me so happy ❤️";
@@ -86,41 +84,52 @@ export default function Quiz() {
     }
 
     return (
-      <div className="glass final-card">
-
+      <div className="app-wrapper">
+    
         {!skip && (
           <p className="score-text">
             ❤️ Score {score}/{questions.length}
           </p>
         )}
-
-        
-        <div class="valentine-bg">
-              <div class="card">
-                <p class="small-text">Will you be my</p>
-                <h1>Valentine?</h1>
-              <div class="buttons"><button className="yes-btn" onClick={yesClick}>
-          YES 💖
-        </button>
-
-        <button
-          className="no-btn"
-          style={{ transform: `translate(${noPos.x}px,${noPos.y}px)` }}
-          onMouseEnter={moveNo}
-        >
-          NO 😈
-        </button>
+    
+        <div className="val-card">
+    
+          <div className="card">
+    
+            <p className="v-small-text">Will you be my</p>
+    
+            <h1 className="v-valentine-text">Valentine? ❤️</h1>
+    
+            <div className="v-buttons">
+    
+              <button 
+                className="yes-btn" 
+                onClick={yesClick}
+              >
+                YES 💖
+              </button>
+    
+              <button
+                className="no-btn"
+                style={{ transform: `translate(${noPos.x}px,${noPos.y}px)` }}
+                onMouseEnter={moveNo}
+              >
+                NO 😈
+              </button>
+    
             </div>
+    
           </div>
-          <span class="heart">💗</span>
-          <span class="heart">💖</span>
-          <span class="heart">💞</span>
-          <span class="heart">💕</span>
-
+    
+          <span className="heart">💗</span>
+          <span className="heart">💖</span>
+          <span className="heart">💞</span>
+          <span className="heart">💕</span>
+    
         </div>
-
+    
       </div>
-    );
+    );    
   }
 
   /* ===== QUIZ ===== */

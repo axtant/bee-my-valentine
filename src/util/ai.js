@@ -7,9 +7,19 @@ const res = await fetch("https://api.openai.com/v1/chat/completions", {
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
     },
     body: JSON.stringify({
-        prompt: "Generate a cute valentine quiz question with 2 options and correct answer"
-      })
-    });
+        model: "gpt-4.1-mini",
+        messages: [{ role: "user", content: `
+Generate 3 romantic MCQ questions for couples.
+Return JSON only in this format:
+
+[
+ { "text": "", "options": ["","","",""], "correct": 0 }
+]
+`}
+],
+temperature: 0.7
+})
+});
 
 const data = await response.json();
 
