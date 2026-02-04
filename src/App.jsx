@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Creator from "./components/Creator";
 import Quiz from "./components/Quiz";
 import FloatingHearts from "./components/FloatingHearts";
-import "./hearts.css";
 
 export default function App() {
   return (

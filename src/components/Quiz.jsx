@@ -4,7 +4,6 @@ import "../index.css";
 import "../cupid.css";
 import FloatingHearts from "./FloatingHearts";
 import DrawHeart from "./DrawHeart";
-import characterImg from "../assets/character.png";
 import petsImg from "../assets/option_pets.png";
 import turkeyImg from "../assets/option_turkey.png";
 

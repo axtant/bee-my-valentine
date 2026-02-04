@@ -3,7 +3,6 @@ import { getAIQuestions } from "../util/ai";
 import gsap from "gsap";
 import "../cupid.css";
 import FloatingHearts from "./FloatingHearts";
-import characterImg from "../assets/character.png";
 
 export default function Creator() {
   const [questions, setQuestions] = useState([
@@ -130,7 +129,7 @@ export default function Creator() {
 
         {showHelp && (
           <div className="help-overlay animate-fade-in" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(255,255,255,0.95)', zIndex: 120, padding: '20px', borderRadius: '20px' }}>
-            <div className="help-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <div className="help-header" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '20px' }}>
               <h3 style={{ margin: 0 }}>✨ GUIDE ✨</h3>
               <button onClick={() => setShowHelp(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}>✖</button>
             </div>
@@ -255,7 +254,7 @@ export default function Creator() {
                       copy[activeQuestion].text = e.target.value;
                       setQuestions(copy);
                     }}
-                    style={{ width: "100%", padding: "10px", borderRadius: "10px", border: "1px solid #ddd", marginBottom: "10px" }}
+                    style={{ width: "98%", padding: "10px", borderRadius: "10px", border: "1px solid #ddd", marginBottom: "10px" }}
                   />
 
                   <div className="card-actions" style={{ marginBottom: "10px" }}>
