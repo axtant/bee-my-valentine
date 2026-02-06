@@ -314,7 +314,6 @@ html {
     border-radius: 50px;
     cursor: pointer;
     font-weight: bold;
-    transition: transform 0.2s;
 }
 
 .yes-btn {
@@ -324,6 +323,7 @@ html {
 
 .no-btn {
     background-color: white;
+    transition: transform 0.05s linear;
     color: #ff6699;
 }
 

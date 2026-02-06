@@ -47,9 +47,17 @@ export default function Quiz() {
   const [noPos, setNoPos] = useState({ x: 0, y: 0 });
 
   const moveNo = () => {
+    const padding = 50; // space from edges (safe zone)
+
+    const maxX = window.innerWidth - padding;
+    const maxY = window.innerHeight - padding;
+  
+    const randomX = Math.random() * maxX - maxX / 2;
+    const randomY = Math.random() * maxY - maxY / 2;
+  
     setNoPos({
-      x: Math.random() * 200 - 100,
-      y: Math.random() * 200 - 100
+      x: randomX,
+      y: randomY
     });
   };
 
