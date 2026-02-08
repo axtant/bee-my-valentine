@@ -10,7 +10,6 @@ export default function DrawHeart({ message }) {
 
         const q = gsap.utils.selector(containerRef.current);
 
-        // Ensure greeting is visible and animate it
         gsap.fromTo(q('.s'),
             {
                 opacity: 0,

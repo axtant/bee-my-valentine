@@ -4,8 +4,6 @@ import "../index.css";
 import "../cupid.css";
 import FloatingHearts from "./FloatingHearts";
 import DrawHeart from "./DrawHeart";
-import petsImg from "../assets/option_pets.png";
-import turkeyImg from "../assets/option_turkey.png";
 
 const uwu = [
   "UwU correct 💖",

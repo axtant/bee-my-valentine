@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { getAIQuestions } from "../util/ai";
+import { generateSingleQuestion } from "../util/ai";
 import gsap from "gsap";
 import "../cupid.css";
 import FloatingHearts from "./FloatingHearts";
@@ -17,6 +17,7 @@ export default function Creator() {
   const [finalMessage, setFinalMessage] = useState("");
   const [mode, setMode] = useState(null); // null | "quiz"
   const [showHelp, setShowHelp] = useState(false);
+  const [isGeneratingAI, setIsGeneratingAI] = useState(false);
 
   const slideRef = useRef(null);
   const prevActiveRef = useRef(0);
@@ -72,15 +73,45 @@ export default function Creator() {
     alert(isSkip ? "💌 Valentine link copied!" : "💌 Quiz link copied!");
   };
 
-  const suggestAI = async () => {
+  const handleAIGenerate = async () => {
+    if (isGeneratingAI) return;
+    
+    setIsGeneratingAI(true);
     try {
-      const aiQs = await getAIQuestions();
-      const formatted = aiQs.map(q => ({ ...q, image: null }));
-      setQuestions(formatted.slice(0, 5));
-      setActiveQuestion(0);
-      setMode("quiz");
-    } catch {
-      alert("AI failed 😢 try again");
+      const generatedText = await generateSingleQuestion();
+      if (generatedText && typeof generatedText === 'string' && generatedText.trim().length > 0) {
+        const copy = [...questions];
+        copy[activeQuestion].text = generatedText.trim();
+        setQuestions(copy);
+      } else {
+        throw new Error("Invalid question text received");
+      }
+    } catch (error) {
+      console.error("Failed to generate AI question:", error);
+      // Fallback is handled in generateSingleQuestion, but just in case:
+      const copy = [...questions];
+      const fallbackQuestions = [
+        "What's my favorite thing about you?",
+        "Where did we first meet?",
+        "What's our song?",
+        "What's my favorite memory with you?",
+        "What makes me smile the most?",
+        "What's my favorite way to spend time with you?",
+        "What's the sweetest thing you've ever done for me?",
+        "What's my favorite nickname for you?",
+        "What's our favorite date spot?",
+        "What's the first thing I noticed about you?",
+        "What's my favorite thing you cook?",
+        "What's our inside joke?",
+        "What's my favorite thing to do together?",
+        "What's the most romantic thing you've said to me?",
+        "What's my favorite quality about you?",
+        "Where did we click this photo?"
+      ];
+      copy[activeQuestion].text = fallbackQuestions[Math.floor(Math.random() * fallbackQuestions.length)];
+      setQuestions(copy);
+    } finally {
+      setIsGeneratingAI(false);
     }
   };
 
@@ -256,13 +287,32 @@ export default function Creator() {
                     }}
                     style={{ width: "98%", padding: "10px", borderRadius: "10px", border: "1px solid #ddd", marginBottom: "10px" }}
                   />
+                 
 
-                  <div className="card-actions" style={{ marginBottom: "10px" }}>
+                  <div className="card-actions" style={{ marginBottom: "10px", display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
                     <label className="upload-label" style={{ cursor: "pointer", color: "#ff6699", fontWeight: "bold", fontSize: "0.9rem" }}>
                       <input type="file" hidden onChange={e => addImage(e, activeQuestion)} />
                       📷 {q.image ? "Change Image" : "Add Image"}
                     </label>
+                    <button 
+                      onClick={handleAIGenerate}
+                      disabled={isGeneratingAI}
+                      style={{
+                        margin: "0",
+                        padding: "8px 16px",
+                        borderRadius: "8px",
+                        border: "none",
+                        background: isGeneratingAI ? "#ccc" : "#ff6699",
+                        color: "white",
+                        fontWeight: "bold",
+                        cursor: isGeneratingAI ? "not-allowed" : "pointer",
+                        fontSize: "0.9rem"
+                      }}
+                    >
+                      {isGeneratingAI ? "✨ Generating..." : "✨ Get AI help"}
+                    </button>
                   </div>
+                  
                   {q.image && <img src={q.image} className="preview-img" alt="preview" style={{ width: "100%", maxHeight: "150px", objectFit: "cover", borderRadius: "10px", marginBottom: "10px" }} />}
 
                   <div className="options-input-grid" style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
